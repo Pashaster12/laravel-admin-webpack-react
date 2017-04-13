@@ -1,40 +1,47 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Laravel distributive with Admin panel, admin's Auth and WebPack
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Contains:
+- Laravel
+- AdminLTE - https://github.com/almasaeed2010/AdminLTE
+- Laravel Auth
+- WebPack - https://github.com/webpack/webpack
 
-## About Laravel
+## Components
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+### Laravel
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Pure Laravel 5.4.17
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+### AdminLTE
 
-## Learning Laravel
+Light version of the AdminLTE with:
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+-adaptivity included (desktop/mobile)
+-simple sidebar (single and list element)
+-simple header with logout button
+-iCheck plugin for beautiful checkboxes/radio
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+### Laravel Auth
 
-## Contributing
+Basic Laravel user's auth for administrator in admin panel. Auth data - admin/admin
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+!Note Basic auth routes Auth::routes() were redeclared with login and logout as useful.
 
-## Security Vulnerabilities
+### WebPack
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+WebPack was included for packing and minifying JS and CSS sources.
 
-## License
+All list of possibilities:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+-transform scss to css
+-minify css
+-minify js
+
+All third-parted packages, using with WebPack, are in ../node_modules folder. You can reorder WebPack's rules and add own ones into the ../webpack.config.js.
+
+Sources are in ../resources/assets directory, sorting by usage in admin part and front part of the site (site folder).
+If  you want to add your custom modules - place them to the 'components' folder inside the 'site' and 'admin' paths. And don't forget to write them in the main source file - main.scss/main.js.
+
+### Installation
+
+Just clone repo to your local machine or download zip and unpack it and run `composer install` to update the Laravel version.
