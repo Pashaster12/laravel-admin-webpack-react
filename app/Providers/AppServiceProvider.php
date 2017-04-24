@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //Custom validator for matching values
+        Validator::extend('check_password', function ($attribute, $value, $parameters, $validator) {
+            return \Hash::check($value, current($parameters));
+        });
+        
+        Validator::replacer('check_password', function ($message, $attribute, $rule, $parameters) {
+            return 'Your new and current passwords must matches!';
+        });
     }
 
     /**

@@ -22,7 +22,7 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="user user-menu">
                     <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <span class="hidden-xs uppercase">{{ Auth::user()->login }}</span>
+                        <span class="hidden-xs">{{ Auth::user()->login }}</span>
                         <span><i class="fa fa-sign-out"></i></span>
                         
                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">

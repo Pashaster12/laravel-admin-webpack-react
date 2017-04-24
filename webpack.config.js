@@ -17,6 +17,9 @@ module.exports = {
             './js/admin/auth.min.js' : './js/admin/auth.js',
             './css/admin/auth.min.css' : './sass/admin/auth.scss',
             
+            './js/admin/datatables.min.js' : './js/admin/datatables.js',
+            './css/admin/datatables.min.css' : './sass/admin/datatables.scss',
+            
             './js/admin/main.min.js' : './js/admin/main.js',
             './css/admin/main.min.css' : './sass/admin/main.scss',
             

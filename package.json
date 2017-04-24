@@ -25,6 +25,7 @@
   "dependencies": {
     "admin-lte": "^2.3.11",
     "bootstrap": "^3.3.7",
+    "datatables-bootstrap3-plugin": "^0.5.0",
     "file-loader": "^0.11.1",
     "icheck": "^1.0.2",
     "jquery": "^3.2.1",

@@ -32,3 +32,106 @@
     padding-top: 0 !important;
 }
 /**************************/
+
+.form-horizontal label.btn
+{
+    display: inline-block;
+}
+
+#uploadedImages {
+    display: inline-block;
+}
+
+#uploadedImages div {
+    display: inline-block;
+    padding-right: 20px;
+}
+
+#uploadedImages div i {
+    vertical-align: top;
+    padding-left: 5px;
+}
+
+#uploadedImages div img, #postImage {
+    width: 100px;
+    height: 100px;
+}
+
+#uploadedImages div i:hover {
+    color: #f00;
+    cursor: pointer;
+}
+
+#colorImage {
+    margin-right: 20px;
+    width: 100px;
+    height: 100px;
+}
+
+#product_img, #color_img, #post_img
+{
+    display: none;
+}
+
+label.required {
+    padding-right: 9px;
+}
+
+label.required:after {
+    content: "*";
+    color: red;
+}
+
+label.alert {
+    color: #f00;
+}
+
+.no-sort {
+    padding-right: 8px !important;
+}
+
+.action-buttons {
+    text-align: right;
+    min-width: 78px !important;
+}
+
+#list td {
+    vertical-align: middle;
+}
+
+.size-device div.checkbox {
+    float: left;
+    margin-right: 20px;
+}
+
+.cat-div .checkbox:first-child {
+    padding-top: 0;
+}
+
+label[for="post_img"] {
+    margin-left: 20px;
+}
+
+.note-editor .form-group {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+h1 {
+    display: inline-block;
+    padding: 5px 0 3px;
+}
+
+@media (max-width: 992px)
+{
+    .col-xs-4 {margin-bottom: 15px;}
+    .col-xs-4:last-child {margin-bottom: 0;}
+}
+
+@media (max-width: 885px)
+{
+    #list {
+        display: inline-block;
+        overflow: auto;
+    }
+}

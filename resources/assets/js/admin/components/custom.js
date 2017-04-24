@@ -6,14 +6,29 @@ $(document).ready(function() {
     });
     
     //Highlight the active menu item
+    function getBaseUrl() {
+        var re = new RegExp(/^.*\//);
+        return re.exec(window.location.href).shift();
+    }
+    
     $(function () {
         var location = window.location.href;
         
-        //Desctop
+        //Desktop
         $('.sidebar-menu li').each(function () {
+            
             var link = $(this).find('a').attr('href');
-            if(location.indexOf(link) != -1 && link != '/admin') $(this).addClass('active');
+            if((location.indexOf(link) != -1 && link + '/' != getBaseUrl()) || (link == location)) $(this).addClass('active');
         });
+    });
+    
+    
+    $('#password-block').on('shown.bs.collapse', function () {
+        $('button[href="#password-block"]').text('Отмена');
+    });
+    
+    $('#password-block').on('hidden.bs.collapse', function () {
+        $('button[href="#password-block"]').text('Сменить пароль');
     });
     
 });
