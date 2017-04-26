@@ -1,1 +1,0 @@
-<script src="{{ asset('js/site/main.min.js') }}"></script>    

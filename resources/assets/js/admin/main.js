@@ -1,5 +1,6 @@
 import 'bootstrap/dist/js/bootstrap.min.js';
 import 'admin-lte/dist/js/app.min.js';
+require('../../../../public/vendor/laravel-filemanager/js/lfm.js');
 
 import './components/custom.js';
 

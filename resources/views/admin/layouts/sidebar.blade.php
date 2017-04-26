@@ -16,6 +16,12 @@
                 </a>
             </li>
             
+            <li>
+                <a href="#" id="lfm" data-input="thumbnail" data-preview="holder">
+                    <i class="fa fa-picture-o"></i> <span>Загрузка картинок</span>
+                </a>
+            </li>
+            
         </ul>
     </section>
     <!-- /.sidebar -->

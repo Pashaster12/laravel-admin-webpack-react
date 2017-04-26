@@ -5,18 +5,17 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\User;
+use App\Page;
 use Illuminate\Support\Facades\File;
-use Illuminate\Validation\Rule;
 
 class PageController extends Controller
 {
     //List of static pages
     public function listPages()
     {
-        $pages = File::allFiles(base_path('resources\views\site\static_pages'));
+        $pages = Page::all();
         
-        return view('admin.static_pages.page_list', ['pages' => $pages]);
+        return view('admin.pages.page_list', ['pages' => $pages]);
     }
     
     //Edit single page
@@ -24,26 +23,44 @@ class PageController extends Controller
     {
         if(!empty($page_name))
         {
-            $content = File::get(base_path('resources/views/site/static_pages/' . $page_name . '.blade.php'));
-            $page = $page_name;
+            $content = File::get(base_path('resources/views/site/pages/' . $page_name . '.blade.php'));
+            $slug = $page_name;
         }
         else
         {
             $content = '';
-            $page = '';
+            $slug = '';
+        }
+        
+        $layouts_files = File::files(base_path('resources\views\site\layouts'));
+        
+        if(!empty($layouts_files))
+        {
+            foreach ($layouts_files as $filename)
+            {
+                if(!empty($filename)) $layouts[] = basename($filename, '.blade.php');
+            }
         }
         
         $fields = [
-            'old_name' => [
+            'old_slug' => [
                 'type' => 'hidden',
-                'value' => $page
+                'value' => $slug
             ],
             
-            'new_name' => [
+            'slug' => [
                 'type' => 'text',
-                'label' => 'Название страницы',
-                'placeholder' => 'Введите название страницы',
-                'value' => $page,
+                'label' => 'URL страницы',
+                'placeholder' => 'Введите URL страницы',
+                'value' => $slug,
+                'required' => true
+            ],
+            
+            'layout' => [
+                'type' => 'select',
+                'label' => 'Шаблон страницы',
+                'options' => $layouts,
+                'valueid' => false,
                 'required' => true
             ],
             
@@ -56,20 +73,52 @@ class PageController extends Controller
             ],
         ];
         
-        return view('admin.static_pages.page_single', ['page' => $page, 'fields' => $fields]);
+        return view('admin.pages.page_single', ['page' => $slug, 'fields' => $fields]);
     }
     
     //Save single page
     public function savePage(Request $request)
     {
         $this->validate($request, [
-            'new_name' => 'required'
+            'slug' => 'required',
+            'layout' => 'required'
         ]);
         
-        if(!empty($request->old_name))
+        if(!empty($request->old_slug))
         {
-            if($request->old_name != $request->new_name) ;//1;
-            else File::put(base_path('resources/views/site/static_pages/' . $request->new_name . '.blade.php'), $request->content);
+            if($request->old_slug != $request->slug)
+            {
+                $this->validate($request, [
+                    'slug' => 'unique:pages,slug'
+                ]);
+                
+                $file = File::move(base_path('resources/views/site/pages/' . $request->old_slug . '.blade.php'), base_path('resources/views/site/pages/' . $request->slug . '.blade.php'));
+            }
+            else $file = File::put(base_path('resources/views/site/pages/' . $request->slug . '.blade.php'), $request->content);
+            
+            if($file)
+            {
+                Page::where('slug', $request->old_slug)->update([
+                    'slug' => $request->slug,
+                    'layout' => $request->layout
+                ]);
+            }
+        }
+        else
+        {
+            $this->validate($request, [
+                'slug' => 'unique:pages,slug'
+            ]);
+            
+            $file = File::put(base_path('resources/views/site/pages/' . $request->slug . '.blade.php'), $request->content);
+            
+            if($file)
+            {
+                Page::create([
+                    'slug' => $request->slug,
+                    'layout' => $request->layout
+                ]);
+            }
         }
         
         return redirect('admin/pages');
