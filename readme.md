@@ -17,16 +17,16 @@ Pure Laravel 5.4.17
 
 Light version of the AdminLTE with:
 
--adaptivity included (desktop/mobile)
--simple sidebar (single and list element)
--simple header with logout button
--iCheck plugin for beautiful checkboxes/radio
+- adaptivity included (desktop/mobile)
+- simple sidebar (single and list element)
+- simple header with logout button
+- iCheck plugin for beautiful checkboxes/radio
 
 ### Laravel Auth
 
 Basic Laravel user's auth for administrator in admin panel. Auth data - admin/admin
 
-!Note Basic auth routes Auth::routes() were redeclared with login and logout as useful.
+!!!Note Basic auth routes Auth::routes() were redeclared with login and logout as useful.
 
 ### WebPack
 
@@ -34,9 +34,9 @@ WebPack was included for packing and minifying JS and CSS sources.
 
 All list of possibilities:
 
--transform scss to css
--minify css
--minify js
+- transform scss to css
+- minify css
+- minify js
 
 All third-parted packages, using with WebPack, are in ../node_modules folder. You can reorder WebPack's rules and add own ones into the ../webpack.config.js.
 
@@ -51,6 +51,6 @@ Just clone repo to your local machine or download zip and unpack it and run `com
 
 In admin panel you can:
 
--edit the admin's information
--CRUD site's pages
--Manage site's images
+- edit the admin's information
+- CRUD site's pages
+- manage site's images with UniSharp filemanager
