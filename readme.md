@@ -6,6 +6,7 @@ Contains:
 - Laravel Auth
 - WebPack - https://github.com/webpack/webpack
 - UniSharp Laravel Filemanager - https://github.com/UniSharp/laravel-filemanager
+- Custom form-builder for simple creating new pages in admin panel
 
 ## Components
 
@@ -45,7 +46,7 @@ If  you want to add your custom modules - place them to the 'components' folder 
 
 ### Installation
 
-Just clone repo to your local machine or download zip and unpack it and run `composer install` to update the Laravel version.
+Just clone repo to your local machine or download zip and unpack it and run `composer update --no-scripts` to update the Laravel version.
 
 ### Product's features
 
