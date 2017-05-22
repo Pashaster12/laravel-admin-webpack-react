@@ -29,27 +29,27 @@
             </thead>
             <tbody>
                 @foreach($pages as $page)
-                <tr>
-                    <td>
-                        {{ $page->slug }}
-                    </td>
+                    <tr>
+                        <td>
+                            {{ $page->slug }}
+                        </td>
 
-                    <td>
-                        {{ $page->layout }}
-                    </td>
+                        <td>
+                            {{ $page->layout }}
+                        </td>
 
-                    <td>
-                        <span class="pull-right">
-                            <a href="{{ url('admin/page/' . $page->slug . '/edit') }}" class="btn btn-primary">
-                                <i class="fa fa-pencil"></i>
-                            </a>
-                            
-                            <a href="#" data-object-id="{{ $page->id }}" data-object-alias="page" class="btn btn-danger obj_delete_btn">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                        </span>
-                    </td>
-                </tr>
+                        <td>
+                            <span class="pull-right">
+                                <a href="{{ url('admin/page/' . $page->slug . '/edit') }}" class="btn btn-primary">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+
+                                <a href="#" data-object-id="{{ $page->id }}" data-object-alias="page" class="btn btn-danger obj_delete_btn">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>

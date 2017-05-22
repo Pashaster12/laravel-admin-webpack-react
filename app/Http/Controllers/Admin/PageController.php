@@ -5,8 +5,13 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Page;
+use App\Http\Models\Page;
 use Illuminate\Support\Facades\File;
+
+use App\FormBuilder\Elements\TextElement;
+use App\FormBuilder\Elements\HiddenElement;
+use App\FormBuilder\Elements\SelectElement;
+use App\FormBuilder\Elements\TextareaElement;
 
 class PageController extends Controller
 {
@@ -43,34 +48,10 @@ class PageController extends Controller
         }
         
         $fields = [
-            'old_slug' => [
-                'type' => 'hidden',
-                'value' => $slug
-            ],
-            
-            'slug' => [
-                'type' => 'text',
-                'label' => 'URL страницы',
-                'placeholder' => 'Введите URL страницы',
-                'value' => $slug,
-                'required' => true
-            ],
-            
-            'layout' => [
-                'type' => 'select',
-                'label' => 'Шаблон страницы',
-                'options' => $layouts,
-                'valueid' => false,
-                'required' => true
-            ],
-            
-            'content' => [
-                'type' => 'textarea',
-                'label' => 'Код страницы',
-                'placeholder' => 'Введите код страницы',
-                'value' => $content,
-                'row_count' => 25
-            ],
+            new HiddenElement('old_slug', $slug),
+            new TextElement('slug', 'URL страницы', $slug, 'Введите URL страницы', true),
+            new SelectElement('layout', 'Шаблон страницы', $layouts, false, true),
+            new TextareaElement('content', 'Код страницы', $content, 'Введите код страницы', 25, false)
         ];
         
         return view('admin.pages.page_single', ['page' => $slug, 'fields' => $fields]);

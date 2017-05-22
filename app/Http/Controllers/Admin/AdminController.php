@@ -5,30 +5,20 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\User;
+use App\Http\Models\User;
 use Illuminate\Validation\Rule;
+
+use App\FormBuilder\Elements\TextElement;
+use App\FormBuilder\Elements\EmailElement;
 
 class AdminController extends Controller
 {
     //Change admin account's information
     public function infoAdmin()
-    {       
+    {     
         $fields = [
-            'login' => [
-                'type' => 'text',
-                'label' => 'Логин',
-                'placeholder' => 'Введите имя учётной записи администратора',
-                'value' => auth()->user()->login,
-                'required' => true
-            ],
-            
-            'email' => [
-                'type' => 'email',
-                'label' => 'Email',
-                'placeholder' => 'Введите email администратора',
-                'value' => auth()->user()->email,
-                'required' => true
-            ],
+            new TextElement('login', 'Логин', auth()->user()->login, 'Введите имя учётной записи администратора', true),
+            new EmailElement('email', 'Email', auth()->user()->email, 'Введите email администратора', true)
         ];
         
         return view('admin.account', ['fields' => $fields]);

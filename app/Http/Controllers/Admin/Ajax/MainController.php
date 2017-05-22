@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
 use App\Http\Controllers\Controller;
-use App\Page;
+use App\Http\Models\Page;
 
 class MainController extends Controller
 {

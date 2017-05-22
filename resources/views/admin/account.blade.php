@@ -36,9 +36,9 @@
         
         <div>
             @if(!empty($fields))
-                @foreach($fields as $name => $field)
+                @foreach($fields as $field)
                     <div class="form-group">
-                        @include('admin.form_builder.' . $field['type'])
+                        {!! $field->render() !!}
                     </div>
                 @endforeach
             @endif
