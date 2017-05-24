@@ -5,3 +5,5 @@
 @else
     <script src="{{ asset('js/admin/main.min.js') }}"></script>
 @endif
+
+<script src="{{ asset('js/admin/react_test.min.js') }}"></script>

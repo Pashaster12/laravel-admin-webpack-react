@@ -14,6 +14,8 @@ module.exports = {
 	context: path.join(__dirname, 'resources/assets'), 
         
 	entry: {
+            './js/admin/react_test.min.js' : './js/admin/react_test.jsx',
+            
             './js/admin/auth.min.js' : './js/admin/auth.js',
             './css/admin/auth.min.css' : './sass/admin/auth.scss',
             
@@ -49,6 +51,15 @@ module.exports = {
                     })
                 },
                 
+                {
+                    test: /.jsx?$/,
+                    loader: 'babel-loader',
+                    exclude: /node_modules/,
+                    query: {
+                        presets: ['es2015', 'react', 'stage-0', 'stage-1']
+                    }
+                },
+                
                 { 
                     test: /\.(png|jpg|gif)$/,
                     loader: 'url-loader'
@@ -78,6 +89,13 @@ module.exports = {
                 compress: {warnings: false}
             }),
             
-            extractSass
+            extractSass,
+            
+            //Prevent errors because of React.JS
+            new webpack.DefinePlugin({
+                'process.env': {
+                    'NODE_ENV': JSON.stringify('production')
+                }
+            })
         ]
 };
